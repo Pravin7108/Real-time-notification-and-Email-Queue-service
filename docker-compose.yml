@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    container_name: realtime-email
+    ports:
+      - 3000:3000
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  redis:
+    image: redis
+    container_name: redis-email
+    ports:
+      - "6379:6379"
